@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Digital Clock</title>
+		<style type="text/css">
+		  body{
+            height: 1000px;
+            background: linear-gradient(to bottom, #9966ff 0%, #ff99cc 100%)
+		  }
+		  .clock{
+			  position: absolute;
+			  top: 30%;
+			  left: 50%;
+			  transform: translateX(-50%) translateY(-50%);
+			  color: #9b1b30;
+			  font-size: 80px;
+			  border: 1px solid #ccc;
+			  padding: 0px 5px 0px 5px;
+              animation: animate 1.5s linear infinite;
+		  }
+		  .dates{
+		  	 position :absolute;
+			 top: 50%;
+			 left: 50%;
+			  transform: translateX(-50%) translateY(-60%);
+			 color: #9b1b30;
+			 font-size: 80px;
+			 border: 1px solid #ccc;
+			 padding: 0px 5px 0px 5px;
+		  }
+		</style>
+	</head>
+	<body>
+		<div id="Digital Clock" class="clock "></div>
+		<script type="text/javascript">
+ 
+			setInterval(()=>{
+				//time
+                let time = document.querySelector('#time');
+                var currentTime = new Date();
+				var h = currentTime.getHours(); 
+				var m = currentTime.getMinutes(); 
+				var s = currentTime.getSeconds(); 
+				var session = "AM";
+				if(h > 12){
+					h = h - 12;
+					session = "PM";
+                }
+                if (h<10){
+                    h = "0" + h;
+                }
+                if(m <10){
+                    m = "0" + m;
+                }
+
+                if (s<10) {
+                    s = "0" + s;
+                }
+ 
+				time = h + ":" + m + ":" + s + " " + session;
+				document.getElementById("Digital Clock").innerText = time;
+				document.getElementById("Digital Clock").textContent = time;
+				setTimeout(showTime, 1000);
+			});
+			</script>
+	</body>
+
+	<body1>
+		<div id="Digital date" class="dates "></div>
+		<script type="text/javascript">
+ 
+			setInterval(()=>{
+				
+				var date = new Date();
+				var year = date.getYear();
+				var day = date.getDay();
+				var month = date.getMonth();
+				var dates = date.getDate();
+				var dayarray = new Array("Sunday","Monday","tuesday","Wednesday","Thursday","Friday","Saturday");
+				var montharray = new Array("Jan","Feb","Mar","Apr","May","June","July","Aug","Sep","Oct","Nov","Dec");
+				if(year < 1000)
+			    	{year +=1900}
+			    if(dates<10)
+			    {
+			    	dates= "0" + dates;
+			    }
+			    var days = "" +montharray[month] + "" +dates+ "," +year+ "/" +dayarray[day];
+				
+				document.getElementById("Digital date").innerText = days;
+				document.getElementById("Digital date").textContent = days;
+			});
+			</script>
+	</body1>
+</html>
